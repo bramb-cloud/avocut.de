@@ -3,804 +3,492 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avocut – Lasergravur, 3D-Druck & Elektronik aus Weinheim</title>
-<meta name="description" content="Avocut aus Weinheim – individuelle Lasergravuren, 3D-Druck und Elektroniklösungen für Unternehmen und Privatpersonen in der Region Bergstraße.">
+<title>Avocut – Lasergravur & 3D-Druck aus Weinheim</title>
+<meta name="description" content="Avocut – individuelle Lasergravuren und 3D-Druck aus Weinheim. Persönlich, präzise, schnell. Jetzt unverbindlich anfragen.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --cream: #F7F4EE;
-    --dark: #1C1A16;
-    --green: #2D5A3D;
-    --green-light: #4A8C63;
-    --green-pale: #E8F0EB;
-    --amber: #C8873A;
-    --amber-pale: #FBF0E3;
-    --text: #2A2720;
-    --muted: #6B6560;
-    --border: #DDD8CF;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.2rem 4rem;
-    background: rgba(247,244,238,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.5rem;
-    color: var(--dark);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  .nav-logo span { color: var(--green); }
-
-  nav ul { list-style: none; display: flex; gap: 2.5rem; }
-  nav ul a {
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--muted);
-    letter-spacing: 0.02em;
-    transition: color 0.2s;
-  }
-  nav ul a:hover { color: var(--green); }
-
-  .nav-cta {
-    background: var(--green) !important;
-    color: white !important;
-    padding: 0.55rem 1.3rem !important;
-    border-radius: 2rem !important;
-    transition: background 0.2s !important;
-  }
-  .nav-cta:hover { background: var(--green-light) !important; color: white !important; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 6rem 3rem 6rem 4rem;
-  }
-
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: block;
-    width: 24px; height: 2px;
-    background: var(--green);
-  }
-
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    color: var(--dark);
-    margin-bottom: 1.5rem;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--green);
-  }
-
-  .hero p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--muted);
-    max-width: 440px;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
-
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-  .btn-primary {
-    background: var(--green);
-    color: white;
-    padding: 0.85rem 2rem;
-    border-radius: 3rem;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: background 0.2s, transform 0.1s;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: var(--green-light); transform: translateY(-1px); }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--text);
-    padding: 0.85rem 2rem;
-    border-radius: 3rem;
-    border: 1.5px solid var(--border);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: border-color 0.2s, transform 0.1s;
-    display: inline-block;
-  }
-  .btn-secondary:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
-
-  .hero-right {
-    background: var(--green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-visual {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: white;
-  }
-
-  .hero-visual svg {
-    width: 280px;
-    opacity: 0.15;
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    padding: 3rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-card {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 16px;
-    padding: 1.5rem;
-    backdrop-filter: blur(8px);
-    transition: background 0.2s;
-  }
-  .hero-card:hover { background: rgba(255,255,255,0.18); }
-
-  .hero-card-icon {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
-    display: block;
-  }
-
-  .hero-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1rem;
-    color: white;
-    margin-bottom: 0.35rem;
-  }
-
-  .hero-card p {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.5;
-    font-weight: 300;
-  }
-
-  /* STRIPE */
-  .stripe {
-    background: var(--dark);
-    color: white;
-    padding: 1.2rem 4rem;
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  .stripe-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    white-space: nowrap;
-    font-size: 0.85rem;
-    font-weight: 300;
-    opacity: 0.85;
-  }
-
-  .stripe-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--amber);
-    flex-shrink: 0;
-  }
-
-  /* SERVICES */
-  .services {
-    padding: 7rem 4rem;
-  }
-
-  .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 4rem;
-  }
-
-  .section-tag {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 0.75rem;
-  }
-
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    color: var(--dark);
-  }
-
-  .section-title em { font-style: italic; color: var(--green); }
-
-  .section-sub {
-    font-size: 0.95rem;
-    color: var(--muted);
-    max-width: 280px;
-    text-align: right;
-    font-weight: 300;
-    line-height: 1.6;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .service-card {
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 2rem;
-    background: white;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--green);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-  }
-
-  .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
-    border-color: transparent;
-  }
-  .service-card:hover::before { transform: scaleX(1); }
-
-  .service-icon {
-    width: 52px; height: 52px;
-    border-radius: 14px;
-    background: var(--green-pale);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .service-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.25rem;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.75rem;
-    color: var(--dark);
-  }
-
-  .service-card p {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.65;
-    font-weight: 300;
-    margin-bottom: 1.5rem;
-  }
-
-  .service-examples {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .tag {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.75rem;
-    border-radius: 2rem;
-    background: var(--green-pale);
-    color: var(--green);
-    font-weight: 500;
-  }
-
-  /* ABOUT */
-  .about {
-    padding: 7rem 4rem;
-    background: var(--dark);
-    color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-
-  .about-left .section-tag { color: var(--amber); }
-
-  .about-left .section-title { color: white; }
-  .about-left .section-title em { color: var(--amber); }
-
-  .about-left p {
-    font-size: 1rem;
-    line-height: 1.75;
-    color: rgba(255,255,255,0.65);
-    font-weight: 300;
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
-  .stat {
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px;
-    padding: 1.25rem;
-  }
-
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
-    color: var(--amber);
-    letter-spacing: -0.03em;
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-    margin-top: 0.25rem;
-  }
-
-  .about-right {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .feature-item {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    padding: 1.25rem;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .feature-item:hover {
-    border-color: rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.04);
-  }
-
-  .feature-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    background: rgba(200, 135, 58, 0.15);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
-  }
-
-  .feature-item h4 {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: white;
-    margin-bottom: 0.3rem;
-  }
-
-  .feature-item p {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  /* CONTACT */
-  .contact {
-    padding: 7rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
-  }
-
-  .contact-left .section-title { margin-bottom: 1rem; }
-
-  .contact-left > p {
-    font-size: 1rem;
-    color: var(--muted);
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 2rem;
-  }
-
-  .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 1rem;
-  }
-
-  .contact-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.9rem;
-    color: var(--muted);
-  }
-
-  .contact-row strong { color: var(--text); font-weight: 500; }
-
-  .contact-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--green);
-    flex-shrink: 0;
-  }
-
-  /* FORM */
-  .contact-form {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 2.5rem;
-  }
-
-  .contact-form h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-    color: var(--dark);
-  }
-
-  .contact-form > p {
-    font-size: 0.875rem;
-    color: var(--muted);
-    margin-bottom: 1.75rem;
-    font-weight: 300;
-  }
-
-  .form-group { margin-bottom: 1.2rem; }
-
-  .form-group label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-    letter-spacing: 0.02em;
-  }
-
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text);
-    background: var(--cream);
-    transition: border-color 0.2s;
-    outline: none;
-    -webkit-appearance: none;
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    border-color: var(--green);
-    background: white;
-  }
-
-  .form-group textarea { resize: vertical; min-height: 110px; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  .form-submit {
-    width: 100%;
-    padding: 0.9rem;
-    background: var(--green);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    margin-top: 0.5rem;
-  }
-  .form-submit:hover { background: var(--green-light); transform: translateY(-1px); }
-
-  /* FOOTER */
-  footer {
-    background: var(--dark);
-    color: rgba(255,255,255,0.5);
-    padding: 2rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.82rem;
-    font-weight: 300;
-  }
-
-  footer a {
-    color: rgba(255,255,255,0.5);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  footer a:hover { color: white; }
-
-  .footer-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem;
-    color: white;
-  }
-  .footer-logo span { color: var(--green-light); }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-left > * {
-    opacity: 0;
-    animation: fadeUp 0.7s forwards;
-  }
-  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
-  .hero-left > *:nth-child(2) { animation-delay: 0.25s; }
-  .hero-left > *:nth-child(3) { animation-delay: 0.4s; }
-  .hero-left > *:nth-child(4) { animation-delay: 0.55s; }
-
-  .hero-card {
-    opacity: 0;
-    animation: fadeUp 0.6s forwards;
-  }
-  .hero-card:nth-child(1) { animation-delay: 0.4s; }
-  .hero-card:nth-child(2) { animation-delay: 0.55s; }
-  .hero-card:nth-child(3) { animation-delay: 0.7s; }
-  .hero-card:nth-child(4) { animation-delay: 0.85s; }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    nav ul { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { min-height: 400px; }
-    .hero-left { padding: 4rem 1.5rem 3rem; }
-    .services, .contact { padding: 4rem 1.5rem; }
-    .services-grid { grid-template-columns: 1fr; }
-    .about { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
-    .contact { grid-template-columns: 1fr; gap: 3rem; }
-    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .section-sub { text-align: left; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
-    .stripe { padding: 1rem 1.5rem; gap: 1.5rem; flex-wrap: wrap; }
-    .form-row { grid-template-columns: 1fr; }
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --warm-white: #FDFAF5;
+  --cream: #F5EFE3;
+  --dark: #1A1510;
+  --brown: #3D2B1A;
+  --green: #2C5F3E;
+  --green-mid: #3D7A54;
+  --green-light: #EBF3EE;
+  --amber: #C47C2B;
+  --text: #2A2118;
+  --muted: #7A6A58;
+  --border: #E0D5C5;
+  --white: #FFFFFF;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; background: var(--warm-white); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 5vw;
+  background: rgba(253,250,245,0.93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(26,21,16,0.08); }
+.logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--dark); text-decoration: none; }
+.logo span { color: var(--green); }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--green); }
+.btn-nav { background: var(--green) !important; color: white !important; padding: 0.6rem 1.5rem !important; border-radius: 50px !important; transition: background 0.2s !important; }
+.btn-nav:hover { background: var(--green-mid) !important; }
+
+/* HERO */
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1.1fr 0.9fr; padding-top: 72px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(44,95,62,0.05) 0%, transparent 70%); pointer-events: none; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 6rem 4rem 6rem 5vw; position: relative; z-index: 1; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--green-light); color: var(--green);
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 2rem; width: fit-content;
+  animation: fadeUp 0.6s 0.1s both;
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5.5vw, 4.8rem); line-height: 1.08; letter-spacing: -0.03em; color: var(--dark); margin-bottom: 1.75rem; animation: fadeUp 0.7s 0.25s both; }
+.hero h1 em { font-style: italic; color: var(--green); }
+.hero-sub { font-size: 1.05rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 460px; margin-bottom: 2.5rem; animation: fadeUp 0.7s 0.4s both; }
+.hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 2.5rem; animation: fadeUp 0.7s 0.5s both; }
+
+.btn-primary { background: var(--green); color: white; padding: 1rem 2.25rem; border-radius: 50px; font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(44,95,62,0.25); }
+.btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(44,95,62,0.35); }
+.btn-ghost { color: var(--text); font-size: 0.95rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.2s, color 0.2s; }
+.btn-ghost:hover { gap: 0.75rem; color: var(--green); }
+.btn-ghost::after { content: '→'; }
+
+.trust-row { display: flex; gap: 1.75rem; flex-wrap: wrap; animation: fadeUp 0.7s 0.6s both; }
+.trust-item { display: flex; align-items: center; gap: 0.45rem; font-size: 0.82rem; color: var(--muted); }
+.trust-item::before { content: '✓'; width: 18px; height: 18px; border-radius: 50%; background: var(--green-light); color: var(--green); font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+.hero-right { position: relative; background: var(--brown); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.hero-right::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 30% 30%, rgba(196,124,43,0.15) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 70% 80%, rgba(44,95,62,0.2) 0%, transparent 60%); }
+.laser-deco { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.06; }
+.hero-cards { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 1.25rem; padding: 3rem 2.5rem; width: 100%; }
+.hcard { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; padding: 1.5rem 1.75rem; backdrop-filter: blur(12px); display: flex; gap: 1.25rem; align-items: flex-start; transition: background 0.25s, border-color 0.25s; }
+.hcard:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.22); }
+.hcard:nth-child(1) { animation: fadeUp 0.6s 0.45s both; }
+.hcard:nth-child(2) { animation: fadeUp 0.6s 0.6s both; }
+.hcard:nth-child(3) { animation: fadeUp 0.6s 0.75s both; }
+.hcard-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(196,124,43,0.2); border: 1px solid rgba(196,124,43,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.hcard h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: white; margin-bottom: 0.3rem; }
+.hcard p { font-size: 0.82rem; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.55; }
+.hcard-price { margin-top: 0.5rem; font-size: 0.78rem; font-weight: 600; color: var(--amber); letter-spacing: 0.03em; }
+
+/* PROOF BAR */
+.proof-bar { background: var(--dark); padding: 1rem 5vw; display: flex; align-items: center; gap: 2.5rem; overflow: hidden; flex-wrap: wrap; }
+.proof-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 300; white-space: nowrap; }
+.proof-sep { color: rgba(255,255,255,0.15); }
+
+/* INTRO */
+.intro { padding: 7rem 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+.eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--green); }
+.intro-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -0.03em; line-height: 1.15; color: var(--dark); margin-bottom: 1.5rem; }
+.intro-text h2 em { font-style: italic; color: var(--green); }
+.intro-text p { font-size: 1rem; line-height: 1.8; color: var(--muted); font-weight: 300; margin-bottom: 1.25rem; }
+.intro-signature { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.sig-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; flex-shrink: 0; }
+.sig-text strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--dark); }
+.sig-text span { font-size: 0.8rem; color: var(--muted); font-weight: 300; }
+.intro-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.num-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 1.75rem 1.5rem; transition: transform 0.2s, box-shadow 0.2s; }
+.num-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(26,21,16,0.07); }
+.num-card:first-child { background: var(--green); border-color: transparent; grid-column: span 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.num-big { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--dark); letter-spacing: -0.04em; line-height: 1; }
+.num-card:first-child .num-big { color: white; font-size: 2.8rem; }
+.num-label { font-size: 0.82rem; color: var(--muted); font-weight: 300; margin-top: 0.35rem; }
+.num-card:first-child .num-label { color: rgba(255,255,255,0.7); }
+.num-right { font-size: 0.85rem; color: rgba(255,255,255,0.75); font-weight: 300; max-width: 190px; text-align: right; line-height: 1.6; flex-shrink: 0; }
+
+/* SERVICES */
+.services { padding: 7rem 5vw; background: var(--cream); }
+.section-head { text-align: center; margin-bottom: 4rem; }
+.section-head .eyebrow { display: block; justify-content: center; }
+.section-head .eyebrow::before { display: none; }
+.section-head h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -0.03em; color: var(--dark); }
+.section-head h2 em { font-style: italic; color: var(--green); }
+.section-head p { font-size: 1rem; color: var(--muted); font-weight: 300; margin-top: 1rem; max-width: 480px; margin-inline: auto; line-height: 1.7; }
+.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.service-card { background: var(--white); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.25s, box-shadow 0.25s; }
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(26,21,16,0.1); }
+.service-visual { height: 200px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.service-card:nth-child(1) .service-visual { background: linear-gradient(135deg, #2A1A0E 0%, #3D2B1A 40%, #1C3A28 100%); }
+.service-card:nth-child(2) .service-visual { background: linear-gradient(135deg, #1A2A3D 0%, #2C3E52 40%, #3A2D1A 100%); }
+.service-visual-pattern { position: absolute; inset: 0; opacity: 0.1; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.2) 0px, rgba(255,255,255,0.2) 1px, transparent 1px, transparent 24px); }
+.service-visual-icon { position: relative; z-index: 1; width: 80px; height: 80px; border-radius: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; backdrop-filter: blur(8px); }
+.service-body { padding: 2rem; }
+.service-body h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 0.75rem; }
+.service-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 1.5rem; }
+.service-uses { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.5rem; }
+.use-tag { font-size: 0.78rem; font-weight: 500; padding: 0.3rem 0.85rem; border-radius: 50px; background: var(--green-light); color: var(--green); }
+.service-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--green); text-decoration: none; transition: gap 0.2s; }
+.service-link:hover { gap: 0.75rem; }
+.service-link::after { content: '→'; }
+
+/* HOW */
+.how { padding: 7rem 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.how-head { margin-bottom: 2.5rem; }
+.how-head h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: -0.03em; color: var(--dark); margin-top: 0.5rem; }
+.how-head h2 em { font-style: italic; color: var(--green); }
+.step { display: flex; gap: 1.5rem; align-items: flex-start; padding-bottom: 2rem; position: relative; }
+.step:not(:last-child)::after { content: ''; position: absolute; left: 19px; top: 40px; width: 2px; bottom: 0; background: var(--border); }
+.step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.875rem; flex-shrink: 0; position: relative; z-index: 1; }
+.step:nth-child(2) .step-num { background: var(--amber); }
+.step:nth-child(3) .step-num { background: var(--brown); }
+.step-content h4 { font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 0.35rem; }
+.step-content p { font-size: 0.875rem; color: var(--muted); font-weight: 300; line-height: 1.6; }
+.how-cta-box { background: var(--green); border-radius: 28px; padding: 3rem; color: white; display: flex; flex-direction: column; gap: 1.5rem; }
+.how-cta-box h3 { font-family: 'Playfair Display', serif; font-size: 2rem; line-height: 1.2; letter-spacing: -0.03em; }
+.how-cta-box h3 em { font-style: italic; color: rgba(255,255,255,0.65); }
+.how-cta-box p { font-size: 0.9rem; color: rgba(255,255,255,0.75); font-weight: 300; line-height: 1.7; }
+.urgency-note { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 300; }
+.btn-white { background: white; color: var(--green); padding: 0.9rem 2rem; border-radius: 50px; font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-block; width: fit-content; transition: background 0.2s, transform 0.15s; }
+.btn-white:hover { background: var(--cream); transform: translateY(-1px); }
+
+/* EXAMPLES */
+.examples { padding: 7rem 5vw; background: var(--dark); }
+.examples .section-head h2 { color: white; }
+.examples .section-head .eyebrow { color: var(--amber); }
+.examples .section-head p { color: rgba(255,255,255,0.55); }
+.examples-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.ex-card { border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: border-color 0.25s, transform 0.25s; }
+.ex-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-4px); }
+.ex-visual { height: 150px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.ex-card:nth-child(1) .ex-visual { background: linear-gradient(135deg, #2A1A0E, #4A2E18); }
+.ex-card:nth-child(2) .ex-visual { background: linear-gradient(135deg, #1A2C1E, #2C5F3E); }
+.ex-card:nth-child(3) .ex-visual { background: linear-gradient(135deg, #1E1A2C, #3D2B5A); }
+.ex-card:nth-child(4) .ex-visual { background: linear-gradient(135deg, #2A1A0E, #3D2B1A); }
+.ex-card:nth-child(5) .ex-visual { background: linear-gradient(135deg, #1A2A1E, #2C4A3D); }
+.ex-card:nth-child(6) .ex-visual { background: linear-gradient(135deg, #2C1A0E, #4A3020); }
+.ex-body { background: rgba(255,255,255,0.04); padding: 1.25rem; }
+.ex-body h4 { font-size: 0.9rem; font-weight: 500; color: white; margin-bottom: 0.25rem; }
+.ex-body p { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-weight: 300; line-height: 1.5; }
+.ex-price { font-size: 0.75rem; font-weight: 600; color: var(--amber); margin-top: 0.5rem; }
+
+/* CONTACT */
+.contact { padding: 7rem 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.contact-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.8rem); letter-spacing: -0.03em; line-height: 1.15; color: var(--dark); margin-bottom: 1.25rem; margin-top: 0.5rem; }
+.contact-left h2 em { font-style: italic; color: var(--green); }
+.contact-left > p { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.75; margin-bottom: 2.5rem; }
+.contact-details { display: flex; flex-direction: column; gap: 0.9rem; }
+.cdetail { display: flex; align-items: center; gap: 0.875rem; font-size: 0.9rem; color: var(--muted); }
+.cdetail-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.cdetail strong { color: var(--text); font-weight: 500; }
+.contact-form { background: var(--white); border: 1px solid var(--border); border-radius: 28px; padding: 2.75rem; box-shadow: 0 8px 40px rgba(26,21,16,0.07); }
+.form-heading { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; }
+.form-heading h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); }
+.form-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+.form-sub { font-size: 0.85rem; color: var(--muted); font-weight: 300; margin-bottom: 2rem; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.fgroup { margin-bottom: 1.1rem; }
+.fgroup label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+.fgroup input, .fgroup textarea, .fgroup select { width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border); border-radius: 12px; font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: var(--text); background: var(--warm-white); transition: border-color 0.2s, background 0.2s; outline: none; -webkit-appearance: none; }
+.fgroup input:focus, .fgroup textarea:focus, .fgroup select:focus { border-color: var(--green); background: white; }
+.fgroup textarea { resize: vertical; min-height: 120px; }
+.form-guarantee { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--muted); font-weight: 300; margin-bottom: 1rem; }
+.btn-submit { width: 100%; padding: 1rem; background: var(--green); color: white; border: none; border-radius: 12px; font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(44,95,62,0.25); }
+.btn-submit:hover { background: var(--green-mid); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(44,95,62,0.35); }
+
+/* FOOTER */
+footer { background: var(--dark); padding: 2.5rem 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: white; }
+.footer-logo span { color: rgba(74,140,99,0.9); }
+.footer-mid { font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 300; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 4rem 5vw 3rem; }
+  .hero-right { min-height: 360px; }
+  .intro, .how, .contact { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 5vw; }
+  .services { padding: 4rem 5vw; }
+  .services-grid { grid-template-columns: 1fr; }
+  .examples { padding: 4rem 5vw; }
+  .examples-grid { grid-template-columns: 1fr 1fr; }
+  .intro-numbers { grid-template-columns: 1fr; }
+  .num-card:first-child { flex-direction: column; }
+  footer { flex-direction: column; text-align: center; }
+  .frow { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .examples-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-logo">Avo<span>cut</span></a>
-  <ul>
+<nav id="navbar">
+  <a href="#" class="logo">Avo<span>cut</span></a>
+  <ul class="nav-links">
     <li><a href="#leistungen">Leistungen</a></li>
-    <li><a href="#ueber-uns">Über uns</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-    <li><a href="#kontakt" class="nav-cta">Anfrage stellen</a></li>
+    <li><a href="#ablauf">Ablauf</a></li>
+    <li><a href="#beispiele">Beispiele</a></li>
+    <li><a href="#kontakt" class="btn-nav">Kostenlos anfragen</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-tag">Weinheim · Bergstraße</div>
-    <h1>Präzision,<br>die man <em>sieht.</em></h1>
-    <p>Individuelle Lasergravuren, 3D-Druck und Elektroniklösungen – maßgeschneidert für Unternehmen und Privatpersonen in der Region.</p>
-    <div class="hero-btns">
-      <a href="#kontakt" class="btn-primary">Anfrage stellen</a>
-      <a href="#leistungen" class="btn-secondary">Leistungen ansehen</a>
+    <div class="hero-badge">Weinheim · Bergstraße · Lokal & persönlich</div>
+    <h1>Ihre Idee.<br><em>Präzise</em><br>gefertigt.</h1>
+    <p class="hero-sub">Individuelle Lasergravuren und 3D-Drucke — maßgeschneidert für Ihr Unternehmen oder Ihr persönliches Projekt. Schnell, lokal, mit echtem Handwerk.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Jetzt kostenlos anfragen</a>
+      <a href="#leistungen" class="btn-ghost">Leistungen entdecken</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item">Antwort innerhalb 24h</div>
+      <div class="trust-item">Kein Mindestbestellwert</div>
+      <div class="trust-item">Lieferung in der Region</div>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-grid">
-      <div class="hero-card">
-        <span class="hero-card-icon">✦</span>
-        <h3>Lasergravur</h3>
-        <p>Holz, Acryl, Leder & mehr</p>
+    <svg class="laser-deco" viewBox="0 0 500 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 50 L450 50 L450 550 L50 550 Z" stroke="white" stroke-width="1"/>
+      <path d="M100 100 L400 100 L400 500 L100 500 Z" stroke="white" stroke-width="0.5"/>
+      <circle cx="250" cy="300" r="150" stroke="white" stroke-width="0.75"/>
+      <circle cx="250" cy="300" r="100" stroke="white" stroke-width="0.5"/>
+      <circle cx="250" cy="300" r="50" stroke="white" stroke-width="0.5"/>
+      <line x1="50" y1="300" x2="450" y2="300" stroke="white" stroke-width="0.5"/>
+      <line x1="250" y1="50" x2="250" y2="550" stroke="white" stroke-width="0.5"/>
+    </svg>
+    <div class="hero-cards">
+      <div class="hcard">
+        <div class="hcard-icon">✦</div>
+        <div>
+          <h3>Lasergravur & -schnitt</h3>
+          <p>Holz, Acryl, Leder, Bambus – präzise auf den Millimeter</p>
+          <div class="hcard-price">Einzelstücke bis Kleinserie</div>
+        </div>
       </div>
-      <div class="hero-card">
-        <span class="hero-card-icon">◈</span>
-        <h3>3D-Druck</h3>
-        <p>Prototypen & Kleinteile</p>
+      <div class="hcard">
+        <div class="hcard-icon">◈</div>
+        <div>
+          <h3>3D-Druck</h3>
+          <p>Prototypen, Ersatzteile, Designobjekte – schnell & präzise</p>
+          <div class="hcard-price">Bambu Lab P1S Qualität</div>
+        </div>
       </div>
-      <div class="hero-card">
-        <span class="hero-card-icon">⚡</span>
-        <h3>Elektronik</h3>
-        <p>Reparatur & Sonderlösungen</p>
-      </div>
-      <div class="hero-card">
-        <span class="hero-card-icon">◎</span>
-        <h3>Lokal & schnell</h3>
-        <p>Abholen oder Lieferung</p>
+      <div class="hcard">
+        <div class="hcard-icon" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15)">📍</div>
+        <div>
+          <h3>Direkt aus Weinheim</h3>
+          <p>Persönlicher Kontakt, Abholung möglich, kein anonymer Webshop</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STRIPE -->
-<div class="stripe">
-  <div class="stripe-item"><span class="stripe-dot"></span> Kein Mindestbestellwert</div>
-  <div class="stripe-item"><span class="stripe-dot"></span> Lieferung in der Region möglich</div>
-  <div class="stripe-item"><span class="stripe-dot"></span> Schnelle Bearbeitung</div>
-  <div class="stripe-item"><span class="stripe-dot"></span> Persönlicher Ansprechpartner</div>
-  <div class="stripe-item"><span class="stripe-dot"></span> Made in Weinheim</div>
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-item">✦ Lokal in Weinheim</div>
+  <div class="proof-sep">|</div>
+  <div class="proof-item">✦ Antwort innerhalb 24h</div>
+  <div class="proof-sep">|</div>
+  <div class="proof-item">✦ Kein Mindestbestellwert</div>
+  <div class="proof-sep">|</div>
+  <div class="proof-item">✦ Lieferung in der Region möglich</div>
+  <div class="proof-sep">|</div>
+  <div class="proof-item">✦ Einzelstücke bis Kleinserie</div>
 </div>
+
+<!-- INTRO -->
+<section class="intro" id="ueber">
+  <div class="intro-text">
+    <div class="eyebrow">Wer steckt dahinter</div>
+    <h2>Handwerk mit <em>modernen Mitteln</em></h2>
+    <p>Ich bin Bram — und ich lebe für Präzision. Mit professionellem Laser und 3D-Drucker fertige ich in Weinheim individuelle Stücke, die wirklich überzeugen.</p>
+    <p>Kein Callcenter, keine anonyme Plattform. Sie schreiben mir direkt — und bekommen eine persönliche Antwort von jemandem, der wirklich weiß, was er tut.</p>
+    <div class="intro-signature">
+      <div class="sig-avatar">B</div>
+      <div class="sig-text">
+        <strong>Bram — Inhaber Avocut</strong>
+        <span>Weinheim, Baden-Württemberg</span>
+      </div>
+    </div>
+  </div>
+  <div class="intro-numbers">
+    <div class="num-card">
+      <div>
+        <div class="num-big">24h</div>
+        <div class="num-label">Antwortzeit auf jede Anfrage</div>
+      </div>
+      <div class="num-right">Kein Warteschleifen-System. Sie erreichen mich direkt.</div>
+    </div>
+    <div class="num-card">
+      <div class="num-big">xTool M1</div>
+      <div class="num-label">Professioneller Laser-Cutter</div>
+    </div>
+    <div class="num-card">
+      <div class="num-big">Bambu P1S</div>
+      <div class="num-label">High-Speed 3D-Drucker</div>
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES -->
 <section class="services" id="leistungen">
-  <div class="section-header">
-    <div>
-      <div class="section-tag">Leistungen</div>
-      <h2 class="section-title">Was ich für Sie<br><em>herstellen</em> kann</h2>
-    </div>
-    <p class="section-sub">Von der Einzelanfertigung bis zur Kleinserie – alles aus einer Hand.</p>
+  <div class="section-head">
+    <span class="eyebrow">Leistungen</span>
+    <h2>Was ich für Sie <em>fertigen</em> kann</h2>
+    <p>Von der Einzelanfertigung bis zur Kleinserie — alles persönlich abgestimmt, aus einer Hand.</p>
   </div>
-
   <div class="services-grid">
     <div class="service-card">
-      <div class="service-icon">✦</div>
-      <h3>Lasergravur & -schnitt</h3>
-      <p>Präzise Gravuren und Schnitte auf verschiedensten Materialien – ideal für Schilder, Geschenke, Werbeartikel und individuelle Dekorationen.</p>
-      <div class="service-examples">
-        <span class="tag">Firmenschilder</span>
-        <span class="tag">Personalisierte Geschenke</span>
-        <span class="tag">Holz & Acryl</span>
-        <span class="tag">Trophäen</span>
-        <span class="tag">Werbeartikel</span>
+      <div class="service-visual">
+        <div class="service-visual-pattern"></div>
+        <div class="service-visual-icon">✦</div>
+      </div>
+      <div class="service-body">
+        <h3>Lasergravur & -schnitt</h3>
+        <p>Präzise Gravuren und Schnitte auf Holz, Acryl, Leder, Bambus und mehr. Ideal für Firmenschilder, personalisierte Geschenke, Werbeartikel und Dekorationen.</p>
+        <div class="service-uses">
+          <span class="use-tag">Firmenschilder</span>
+          <span class="use-tag">Personalisierte Geschenke</span>
+          <span class="use-tag">Trophäen & Pokale</span>
+          <span class="use-tag">Werbeartikel</span>
+          <span class="use-tag">Holz & Acryl</span>
+          <span class="use-tag">Hochzeitsgeschenke</span>
+        </div>
+        <a href="#kontakt" class="service-link">Gravur anfragen</a>
       </div>
     </div>
     <div class="service-card">
-      <div class="service-icon">◈</div>
-      <h3>3D-Druck</h3>
-      <p>Hochwertige Drucke mit der Bambu Lab P1S – von Prototypen über Ersatzteile bis hin zu Designobjekten. Schnell und zuverlässig.</p>
-      <div class="service-examples">
-        <span class="tag">Prototypen</span>
-        <span class="tag">Ersatzteile</span>
-        <span class="tag">Gehäuse</span>
-        <span class="tag">Kleinserien</span>
-        <span class="tag">Modelle</span>
+      <div class="service-visual">
+        <div class="service-visual-pattern"></div>
+        <div class="service-visual-icon">◈</div>
       </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">⚡</div>
-      <h3>Elektronik & Sonderlösungen</h3>
-      <p>Reparaturen, individuelle Elektroniklösungen und smarte Gehäuse – für wenn Standard einfach nicht reicht.</p>
-      <div class="service-examples">
-        <span class="tag">Elektronik-Reparatur</span>
-        <span class="tag">Custom Gehäuse</span>
-        <span class="tag">Smart Home</span>
-        <span class="tag">LED-Projekte</span>
-        <span class="tag">Sonderbau</span>
+      <div class="service-body">
+        <h3>3D-Druck</h3>
+        <p>Hochwertige Drucke mit der Bambu Lab P1S — schnell und präzise. Von Prototypen über Ersatzteile bis hin zu Designobjekten und individuellen Gehäusen.</p>
+        <div class="service-uses">
+          <span class="use-tag">Prototypen</span>
+          <span class="use-tag">Ersatzteile</span>
+          <span class="use-tag">Gehäuse & Halterungen</span>
+          <span class="use-tag">Designobjekte</span>
+          <span class="use-tag">Kleinserien</span>
+          <span class="use-tag">Modelle</span>
+        </div>
+        <a href="#kontakt" class="service-link">3D-Druck anfragen</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="ueber-uns">
-  <div class="about-left">
-    <div class="section-tag">Über Avocut</div>
-    <h2 class="section-title">Handwerk trifft<br><em>Technologie</em></h2>
-    <p>Ich bin Bram – und ich lebe für präzises Handwerk mit modernen Mitteln. Mit meinem Laser, 3D-Drucker und jahrelanger Erfahrung in der Elektronik helfe ich lokalen Unternehmen und Privatkunden, ihre Ideen in die Realität umzusetzen. Schnell, persönlich und aus Weinheim.</p>
-    <a href="#kontakt" class="btn-primary">Projekt besprechen</a>
-    <div class="about-stats">
-      <div class="stat">
-        <div class="stat-num">xTool M1</div>
-        <div class="stat-label">Laser-Cutter & Graveur</div>
+<!-- HOW IT WORKS -->
+<section class="how" id="ablauf">
+  <div>
+    <div class="how-head">
+      <div class="eyebrow">So funktioniert's</div>
+      <h2>Von der Idee zum <em>fertigen Stück</em></h2>
+    </div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Anfrage stellen</h4>
+        <p>Beschreiben Sie Ihr Projekt kurz — Material, Größe, Menge. Kein Formular-Dschungel, eine kurze Nachricht reicht völlig.</p>
       </div>
-      <div class="stat">
-        <div class="stat-num">Bambu P1S</div>
-        <div class="stat-label">High-Speed 3D-Drucker</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Persönliches Angebot</h4>
+        <p>Ich melde mich innerhalb von 24 Stunden mit einem konkreten Angebot. Fair kalkuliert, keine versteckten Kosten.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Fertigung & Übergabe</h4>
+        <p>Nach Ihrer Freigabe geht's los. Abholung in Weinheim oder Lieferung in der Region — ganz wie Sie es möchten.</p>
       </div>
     </div>
   </div>
-  <div class="about-right">
-    <div class="feature-item">
-      <div class="feature-icon">📍</div>
-      <div>
-        <h4>Lokal in Weinheim</h4>
-        <p>Kein anonymer Online-Shop – persönlicher Kontakt, schnelle Abstimmung, Abholung möglich.</p>
+  <div class="how-cta-box">
+    <h3>Bereit für Ihr <em>erstes Projekt?</em></h3>
+    <p>Die meisten Anfragen werden innerhalb eines Tages beantwortet. Kein Risiko, kein Mindestbestellwert — einfach fragen.</p>
+    <div class="urgency-note">⏱ Antwort in der Regel innerhalb von 24 Stunden</div>
+    <a href="#kontakt" class="btn-white">Jetzt kostenlos anfragen</a>
+  </div>
+</section>
+
+<!-- EXAMPLES -->
+<section class="examples" id="beispiele">
+  <div class="section-head" style="margin-bottom:3rem;">
+    <span class="eyebrow">Anwendungsbeispiele</span>
+    <h2>Was andere bei mir <em>bestellen</em></h2>
+    <p>Von Restaurantschildern bis Hochzeitsgeschenken — typische Projekte aus der Praxis.</p>
+  </div>
+  <div class="examples-grid">
+    <div class="ex-card">
+      <div class="ex-visual">🏪</div>
+      <div class="ex-body">
+        <h4>Firmenschilder & Beschilderung</h4>
+        <p>Gravierte Holz- oder Acrylschilder für Restaurants, Büros und Läden</p>
+        <div class="ex-price">Beliebt bei lokalen Betrieben</div>
       </div>
     </div>
-    <div class="feature-item">
-      <div class="feature-icon">⚙️</div>
-      <div>
-        <h4>Technisches Know-how</h4>
-        <p>Elektronik, Mechanik und Design – ich denke mit und finde die beste Lösung für Ihre Anforderung.</p>
+    <div class="ex-card">
+      <div class="ex-visual">🎁</div>
+      <div class="ex-body">
+        <h4>Personalisierte Geschenke</h4>
+        <p>Taufgeschenke, Hochzeitsandenken und Geburtstagspräsente mit Namen</p>
+        <div class="ex-price">Jedes Stück ein Unikat</div>
       </div>
     </div>
-    <div class="feature-item">
-      <div class="feature-icon">🚗</div>
-      <div>
-        <h4>Lieferung in der Region</h4>
-        <p>Für größere Aufträge liefere ich persönlich in Weinheim und Umgebung – kein Versandstress.</p>
+    <div class="ex-card">
+      <div class="ex-visual">🏆</div>
+      <div class="ex-body">
+        <h4>Trophäen & Vereinsartikel</h4>
+        <p>Gravierte Pokale, Auszeichnungen und Artikel für Vereine und Events</p>
+        <div class="ex-price">Auch als Kleinserie</div>
       </div>
     </div>
-    <div class="feature-item">
-      <div class="feature-icon">🎯</div>
-      <div>
-        <h4>Kein Mindestbestellwert</h4>
-        <p>Ob ein einzelnes graviertes Schild oder 50 Trophäen – jede Anfrage ist willkommen.</p>
+    <div class="ex-card">
+      <div class="ex-visual">⚙️</div>
+      <div class="ex-body">
+        <h4>Prototypen & Ersatzteile</h4>
+        <p>3D-gedruckte Teile für Maschinen, Fahrzeuge oder Eigenbau-Projekte</p>
+        <div class="ex-price">Schnell & präzise</div>
+      </div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-visual">🖼️</div>
+      <div class="ex-body">
+        <h4>Deko & Wandkunst</h4>
+        <p>Lasergeschnittene Dekorationen, Bilderrahmen und Designobjekte</p>
+        <div class="ex-price">Für jeden Stil</div>
+      </div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-visual">📦</div>
+      <div class="ex-body">
+        <h4>Gehäuse & Halterungen</h4>
+        <p>Maßgeschneiderte Boxen und Halter aus Holz, Acryl oder PLA</p>
+        <div class="ex-price">Auf Maß gefertigt</div>
       </div>
     </div>
   </div>
@@ -809,67 +497,84 @@
 <!-- CONTACT -->
 <section class="contact" id="kontakt">
   <div class="contact-left">
-    <div class="section-tag">Kontakt</div>
-    <h2 class="section-title">Lassen Sie uns<br><em>loslegen</em></h2>
-    <p>Haben Sie eine Idee oder ein konkretes Projekt? Schreiben Sie mir – ich melde mich in der Regel innerhalb von 24 Stunden zurück.</p>
-    <div class="contact-info">
-      <div class="contact-row">
-        <span class="contact-dot"></span>
-        <span><strong>E-Mail:</strong> kontakt@avocut.de</span>
+    <div class="eyebrow">Kontakt</div>
+    <h2>Lassen Sie uns <em>loslegen</em></h2>
+    <p>Schildern Sie mir kurz Ihr Projekt — ich antworte persönlich und schnell. Kein Risiko, kein Mindestbestellwert, kein Kleingedrucktes.</p>
+    <div class="contact-details">
+      <div class="cdetail">
+        <div class="cdetail-icon">📧</div>
+        <div><strong>kontakt@avocut.de</strong></div>
       </div>
-      <div class="contact-row">
-        <span class="contact-dot"></span>
-        <span><strong>Standort:</strong> Weinheim, Baden-Württemberg</span>
+      <div class="cdetail">
+        <div class="cdetail-icon">📍</div>
+        <div><strong>Weinheim</strong>, Baden-Württemberg</div>
       </div>
-      <div class="contact-row">
-        <span class="contact-dot"></span>
-        <span><strong>Antwortzeit:</strong> Innerhalb von 24 Stunden</span>
+      <div class="cdetail">
+        <div class="cdetail-icon">⏱</div>
+        <div>Antwort <strong>innerhalb von 24 Stunden</strong></div>
+      </div>
+      <div class="cdetail">
+        <div class="cdetail-icon">🚗</div>
+        <div>Abholung möglich · <strong>Lieferung in der Region</strong></div>
       </div>
     </div>
   </div>
   <div class="contact-form">
-    <h3>Anfrage stellen</h3>
-    <p>Kostenlos & unverbindlich</p>
+    <div class="form-heading">
+      <h3>Projekt anfragen</h3>
+      <div class="form-dot"></div>
+    </div>
+    <p class="form-sub">Kostenlos & völlig unverbindlich</p>
     <form action="mailto:kontakt@avocut.de" method="post" enctype="text/plain">
-      <div class="form-row">
-        <div class="form-group">
+      <div class="frow">
+        <div class="fgroup">
           <label>Vorname</label>
           <input type="text" name="vorname" placeholder="Max" required>
         </div>
-        <div class="form-group">
+        <div class="fgroup">
           <label>Nachname</label>
           <input type="text" name="nachname" placeholder="Mustermann" required>
         </div>
       </div>
-      <div class="form-group">
+      <div class="fgroup">
         <label>E-Mail-Adresse</label>
         <input type="email" name="email" placeholder="max@beispiel.de" required>
       </div>
-      <div class="form-group">
-        <label>Leistung</label>
+      <div class="fgroup">
+        <label>Was interessiert Sie?</label>
         <select name="leistung">
           <option value="">Bitte wählen...</option>
           <option>Lasergravur & -schnitt</option>
           <option>3D-Druck</option>
-          <option>Elektronik & Sonderlösungen</option>
-          <option>Sonstiges</option>
+          <option>Beides</option>
+          <option>Noch unsicher – einfach mal fragen</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>Ihre Nachricht</label>
-        <textarea name="nachricht" placeholder="Beschreiben Sie Ihr Projekt kurz – Material, Menge, gewünschtes Ergebnis..." required></textarea>
+      <div class="fgroup">
+        <label>Ihr Projekt</label>
+        <textarea name="nachricht" placeholder="Beschreiben Sie kurz Ihre Idee — Material, Größe, Menge. Je mehr Details, desto schneller kann ich antworten." required></textarea>
       </div>
-      <button type="submit" class="form-submit">Anfrage absenden →</button>
+      <p class="form-guarantee">🔒 Ihre Daten werden nicht weitergegeben. Versprochen.</p>
+      <button type="submit" class="btn-submit">Anfrage kostenlos absenden →</button>
     </form>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Avo<span>cut</span></div>
-  <div>© 2025 Avocut · Weinheim · <a href="mailto:kontakt@avocut.de">kontakt@avocut.de</a></div>
-  <div><a href="#">Impressum</a> · <a href="#">Datenschutz</a></div>
+  <div class="footer-mid">© 2025 Avocut · Weinheim, Baden-Württemberg</div>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="mailto:kontakt@avocut.de">kontakt@avocut.de</a>
+  </div>
 </footer>
 
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
 </body>
 </html>
