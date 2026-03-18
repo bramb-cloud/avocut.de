@@ -533,6 +533,8 @@ footer{
 @media(max-width:560px){
   .products-grid{grid-template-columns:1fr}
 }
+/* Email reveal */
+.email-reveal::after{content:attr(data-user) "\40" attr(data-domain) "\2E" attr(data-tld);color:var(--text);font-weight:500}
 </style>
 </head>
 <body>
@@ -730,7 +732,7 @@ footer{
     <div class="example-item">
       <div>
         <div class="example-item-name">Willkommensschild</div>
-        <div class="example-item-detail">50×40cm Birkenholz · "Bram & Sarah · 14. Juni 2026"</div>
+        <div class="example-item-detail">50×40cm Birkenholz · "Julia & Markus · 14. Juni 2026"</div>
       </div>
       <span class="example-item-price">€65</span>
     </div>
@@ -751,7 +753,7 @@ footer{
     <div class="example-item">
       <div>
         <div class="example-item-name">Cake Topper</div>
-        <div class="example-item-detail">Acryl gold · "Mr & Mrs Brinkmeier"</div>
+        <div class="example-item-detail">Acryl gold · "Mr & Mrs Müller"</div>
       </div>
       <span class="example-item-price">€28</span>
     </div>
@@ -802,7 +804,7 @@ footer{
     <div class="contact-details">
       <div class="cdetail">
         <div class="cdetail-dot"></div>
-        <div><strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a5155544e5b514e7a5b4c55594f4e145e5f">[email&#160;protected]</a></strong></div>
+        <div><strong><span class="email-reveal" data-user="kontakt" data-domain="avocut" data-tld="de" style="cursor:pointer"></span></strong></div>
       </div>
       <div class="cdetail">
         <div class="cdetail-dot"></div>
