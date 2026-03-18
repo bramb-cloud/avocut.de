@@ -26,12 +26,13 @@
   --border-amber:rgba(212,136,42,0.3);
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);overflow-x:hidden;cursor:none}
-
-/* CUSTOM CURSOR */
-.cursor{position:fixed;width:6px;height:6px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s}
-.cursor-ring{position:fixed;width:28px;height:28px;border:1px solid rgba(212,136,42,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.15s,width 0.2s,height 0.2s,opacity 0.2s}
-body:hover .cursor{opacity:1}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);overflow-x:hidden}
+body.has-mouse{cursor:none}
+.cursor{position:fixed;width:6px;height:6px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.2s;left:-100px;top:-100px}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(212,136,42,0.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s,width 0.25s,height 0.25s;left:-100px;top:-100px}
+body.has-mouse.cursor-visible .cursor,body.has-mouse.cursor-visible .cursor-ring{opacity:1}
+.cursor-ring.hovering{width:52px!important;height:52px!important;opacity:0.35!important}
+@media(hover:none),(pointer:coarse){body,body.has-mouse{cursor:auto!important}.cursor,.cursor-ring{display:none!important}}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;mix-blend-mode:normal}
@@ -229,19 +230,30 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
 @media(max-width:768px){
   nav{padding:1.1rem 1.5rem}
   .nav-links{display:none}
-  .hamburger{display:flex}
-  .hero{padding:0 1.5rem 4rem}
-  .service-laser-text,.service-print-text,.contact-left,.contact-right{padding:3rem 1.5rem}
-  .about{padding:4rem 1.5rem}
-  .examples{padding:4rem 1.5rem}
+  .hamburger{display:flex;cursor:pointer}
+  .hero{padding:0 1.5rem 4rem;min-height:100svh}
+  .hero h1{font-size:clamp(3rem,13vw,4.5rem)}
+  .hero-location{display:none}
+  .hero-scroll-indicator{display:none}
+  .service-laser,.service-print{grid-template-columns:1fr}
+  .service-laser-visual,.service-print-visual{min-height:280px}
+  .service-laser-text,.service-print-text,.contact-left,.contact-right{padding:2.5rem 1.5rem}
+  .svc-title{font-size:2.2rem}
+  .about{padding:3.5rem 1.5rem;grid-template-columns:1fr;gap:2rem}
+  .about-left{position:static}
+  .about-portrait{max-height:220px}
+  .about-quote{font-size:1.8rem}
+  .examples{padding:3.5rem 1.5rem}
   .examples-head{flex-direction:column;align-items:flex-start;gap:1rem}
+  .examples-head h2{font-size:2.2rem}
   .examples-head p{text-align:left;max-width:none}
   .examples-grid{grid-template-columns:1fr}
-  .ex:first-child{grid-column:auto}
+  .ex:first-child{grid-column:auto;min-height:auto}
   .about-facts{grid-template-columns:1fr 1fr}
   .frow{grid-template-columns:1fr}
-  footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}
+  footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem;gap:1rem}
   .ticker-inner{animation-duration:10s}
+  .proof-bar{gap:1rem;padding:0.9rem 1.5rem}
 }
 </style>
 </head>
@@ -621,17 +633,47 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Custom cursor
+// Custom cursor — desktop only
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
-function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)}
-animRing();
-document.querySelectorAll('a,button,.ex,.hcard').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.width='48px';ring.style.height='48px';ring.style.opacity='0.5'});
-  el.addEventListener('mouseleave',()=>{ring.style.width='28px';ring.style.height='28px';ring.style.opacity='1'});
-});
+const isTouch = window.matchMedia('(hover:none),(pointer:coarse)').matches;
+
+if(!isTouch){
+  let mx=window.innerWidth/2, my=window.innerHeight/2;
+  let rx=mx, ry=my;
+  let visible=false;
+
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    cursor.style.left=mx+'px';
+    cursor.style.top=my+'px';
+    if(!visible){
+      visible=true;
+      document.body.classList.add('has-mouse','cursor-visible');
+    }
+  });
+
+  document.addEventListener('mouseleave',()=>{
+    document.body.classList.remove('cursor-visible');
+  });
+  document.addEventListener('mouseenter',()=>{
+    if(visible) document.body.classList.add('cursor-visible');
+  });
+
+  function animRing(){
+    rx+=(mx-rx)*0.1;
+    ry+=(my-ry)*0.1;
+    ring.style.left=rx+'px';
+    ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  document.querySelectorAll('a,button,.ex,.material-tag').forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('hovering'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('hovering'));
+  });
+}
 
 // Hamburger
 const ham=document.getElementById('hamburger');
