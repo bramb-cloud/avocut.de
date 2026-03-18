@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Impressum – Avocut</title>
+<title>Impressum – Avocut Weinheim | Lasergravur & 3D-Druck</title>
+<meta name="description" content="Impressum von Avocut – Lasergravur und 3D-Druck aus Weinheim, Inhaber Bram Brinkmeier.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.avocut.de/impressum.html">
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=playfair-display:400,400i,700|outfit:300,400,500,600&display=swap" rel="stylesheet">
 <style>
@@ -157,7 +160,8 @@ footer {
 </footer>
 <script>
 (function(){
-  var e='kontakt'+'@'+'avocut'+'.de';
+  var parts=[107,111,110,116,97,107,116,64,97,118,111,99,117,116,46,100,101];
+  var e=parts.map(function(c){return String.fromCharCode(c)}).join('');
   var a=document.getElementById('impEmail');
   var b=document.getElementById('impFooterEmail');
   if(a){a.textContent=e;a.href='mailto:'+e;}
