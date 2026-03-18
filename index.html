@@ -21,13 +21,14 @@
   --green:#2A5C3F;
   --green-pale:#EBF3EE;
   --text-light:#DDD4BF;
-  --text-muted:#8A7A62;
+  --text-muted:#A89880;
   --border-dark:rgba(240,232,213,0.08);
   --border-amber:rgba(212,136,42,0.3);
 }
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);overflow-x:hidden}
 body.has-mouse{cursor:none}
+.site-wrap{max-width:1600px;margin:0 auto;overflow:hidden}
 .cursor{position:fixed;width:6px;height:6px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.2s;left:-100px;top:-100px}
 .cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(212,136,42,0.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s,width 0.25s,height 0.25s;left:-100px;top:-100px}
 body.has-mouse.cursor-visible .cursor,body.has-mouse.cursor-visible .cursor-ring{opacity:1}
@@ -284,6 +285,8 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
   <a href="#ueber" class="mobile-link">Über mich</a>
   <a href="#kontakt" class="mobile-link">Anfragen</a>
 </div>
+
+<div class="site-wrap">
 
 <!-- HERO -->
 <section class="hero">
@@ -562,7 +565,7 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
     <div class="contact-details">
       <div class="cdetail">
         <div class="cdetail-marker"></div>
-        <div><strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe9591908a9f958abe9f88919d8b8ad09a9b">[email&#160;protected]</a></strong></div>
+        <div><strong><a id="emailLink" href="#kontakt" style="color:inherit;text-decoration:none"></a></strong></div>
       </div>
       <div class="cdetail">
         <div class="cdetail-marker"></div>
@@ -628,11 +631,22 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
   <div class="footer-links">
     <a href="impressum.html">Impressum</a>
     <a href="datenschutz.html">Datenschutz</a>
-    <a href="/cdn-cgi/l/email-protection#385357564c59534c78594e575b4d4c165c5d"><span class="__cf_email__" data-cfemail="fc979392889d9788bc9d8a939f8988d29899">[email&#160;protected]</span></a>
+    <a id="footerEmail" href="#"></a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+</div><!-- /site-wrap -->
+
+<script>
+// Assemble email to prevent Cloudflare obfuscation
+(function(){
+  var u='kontakt',d='avocut',t='de';
+  var email=u+'@'+d+'.'+t;
+  var el=document.getElementById('emailLink');
+  var fe=document.getElementById('footerEmail');
+  if(el){el.textContent=email;el.href='mailto:'+email}
+  if(fe){fe.textContent=email;fe.href='mailto:'+email;fe.style.color='rgba(255,255,255,0.4)';fe.style.textDecoration='none'}
+})();
 // Custom cursor — desktop only
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
