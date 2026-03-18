@@ -106,7 +106,7 @@ footer {
 
   <div class="section">
     <h2>Kontakt</h2>
-    <p>E-Mail: <a href="/cdn-cgi/l/email-protection#600b0f0e14010b142001160f0315144e0405"><span class="__cf_email__" data-cfemail="33585c5d475258477352455c5046471d5756">[email&#160;protected]</span></a></p>
+    <p>E-Mail: <a id="impEmail" href="#" style="color:var(--green)"></a></p>
   </div>
 
   <hr class="divider">
@@ -151,4 +151,18 @@ footer {
   <div class="footer-logo">Avo<span>cut</span></div>
   <div class="footer-links">
     <a href="impressum.html">Impressum</a>
-    <a href="
+    <a href="datenschutz.html">Datenschutz</a>
+    <a id="impFooterEmail" href="#"></a>
+  </div>
+</footer>
+<script>
+(function(){
+  var e='kontakt'+'@'+'avocut'+'.de';
+  var a=document.getElementById('impEmail');
+  var b=document.getElementById('impFooterEmail');
+  if(a){a.textContent=e;a.href='mailto:'+e;}
+  if(b){b.textContent=e;b.href='mailto:'+e;b.style.color='rgba(255,255,255,0.4)';}
+})();
+</script>
+</body>
+</html>
