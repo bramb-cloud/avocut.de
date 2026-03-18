@@ -28,6 +28,11 @@
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);overflow-x:hidden}
 body.has-mouse{cursor:none}
+/* Email reveal */
+.email-reveal::after{content:attr(data-user) "\40" attr(data-domain) "\2E" attr(data-tld)}
+.email-reveal{cursor:pointer}
+.footer-email::after{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase}
+.footer-email:hover::after{color:var(--amber)}
 .site-wrap{max-width:1600px;margin:0 auto;overflow:hidden}
 .cursor{position:fixed;width:6px;height:6px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.2s;left:-100px;top:-100px}
 .cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(212,136,42,0.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s,width 0.25s,height 0.25s;left:-100px;top:-100px}
@@ -92,11 +97,13 @@ nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to b
 .service-laser-visual{background:var(--surface);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:3rem}
 .laser-engraving-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .laser-engraving-art svg{width:100%;height:100%;opacity:0.18}
-.service-laser-num{position:absolute;top:2.5rem;left:2.5rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--text-muted);letter-spacing:0.15em}
-.service-laser-material{display:flex;flex-direction:column;gap:0.4rem;position:relative;z-index:1}
-.material-tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);letter-spacing:0.1em;border:1px solid var(--border-dark);padding:0.35rem 0.75rem;display:inline-block;width:fit-content;transition:border-color 0.2s,color 0.2s}
+.service-laser-visual{background:var(--surface);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:3rem}
+.service-laser-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(13,11,8,0.65) 0%,rgba(13,11,8,0.3) 50%,rgba(13,11,8,0.55) 100%),linear-gradient(to top,rgba(13,11,8,0.8) 0%,transparent 50%);z-index:0}
+.service-laser-num{position:absolute;top:2.5rem;left:2.5rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--text-muted);letter-spacing:0.15em;z-index:2}
+.service-laser-material{display:flex;flex-direction:column;gap:0.4rem;position:relative;z-index:2}
+.material-tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:rgba(240,232,213,0.75);letter-spacing:0.1em;border:1px solid rgba(240,232,213,0.15);padding:0.35rem 0.75rem;display:inline-block;width:fit-content;transition:border-color 0.2s,color 0.2s}
 .material-tag:hover{border-color:var(--border-amber);color:var(--amber)}
-.material-tag.no{color:rgba(138,122,98,0.45);text-decoration:line-through}
+.material-tag.no{color:rgba(240,232,213,0.3);text-decoration:line-through}
 .service-laser-text{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;background:var(--card)}
 .service-num-big{font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:300;color:rgba(240,232,213,0.04);line-height:1;position:absolute;right:3rem;top:2rem;pointer-events:none}
 .svc-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--amber);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
@@ -128,9 +135,9 @@ nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to b
 .service-print-text .svc-cta:hover{border-color:var(--green)}
 .print-bg-num{font-family:'Cormorant Garamond',serif;font-size:12rem;font-weight:600;color:rgba(42,92,63,0.05);position:absolute;bottom:-2rem;left:-1rem;line-height:1;pointer-events:none}
 .service-print-visual{background:var(--ink);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:3rem}
+.service-print-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(to left,rgba(13,11,8,0.5) 0%,rgba(13,11,8,0.25) 40%,rgba(13,11,8,0.5) 100%),linear-gradient(to top,rgba(13,11,8,0.8) 0%,transparent 50%);z-index:0}
 .print-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.print-art svg{width:80%;height:80%;opacity:0.12}
-.service-print-visual .service-laser-num{color:var(--text-muted)}
+.service-print-visual .service-laser-num{color:var(--text-muted);z-index:2}
 
 /* ABOUT — editorial full-width */
 .about{padding:8rem 3rem;display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start;border-top:1px solid var(--border-dark)}
@@ -155,19 +162,20 @@ nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to b
 
 /* EXAMPLES — asymmetric editorial grid */
 .examples{padding:6rem 3rem;border-top:1px solid var(--border-dark)}
+.examples{padding:6rem 3rem;border-top:1px solid var(--border-dark)}
 .examples-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
 .examples-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1;letter-spacing:-0.03em;color:var(--cream)}
 .examples-head h2 em{font-style:italic;color:var(--amber)}
 .examples-head p{font-size:0.85rem;color:var(--text-muted);max-width:220px;text-align:right;line-height:1.6;font-weight:300}
-.examples-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:1px;background:var(--border-dark)}
-.ex{background:var(--surface);padding:2.5rem;position:relative;overflow:hidden;transition:background 0.25s}
-.ex:hover{background:var(--card)}
+.examples-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:2px;background:rgba(240,232,213,0.06)}
+.ex{background:#2A2318;padding:2.5rem;position:relative;overflow:hidden;transition:background 0.25s}
+.ex:hover{background:#342D20}
 .ex:first-child{grid-row:span 2;display:flex;flex-direction:column;justify-content:flex-end;min-height:480px}
-.ex-bg-icon{position:absolute;font-size:6rem;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.06;transition:opacity 0.25s}
-.ex:hover .ex-bg-icon{opacity:0.1}
+.ex-bg-icon{position:absolute;font-size:6rem;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.08;transition:opacity 0.25s}
+.ex:hover .ex-bg-icon{opacity:0.14}
 .ex-num{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--text-muted);letter-spacing:0.15em;margin-bottom:auto;display:block}
 .ex h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--cream);margin-bottom:0.4rem;position:relative;z-index:1}
-.ex p{font-size:0.8rem;color:var(--text-muted);font-weight:300;line-height:1.55;position:relative;z-index:1}
+.ex p{font-size:0.82rem;color:#C8B898;font-weight:300;line-height:1.6;position:relative;z-index:1}
 .ex-tag{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--amber);letter-spacing:0.1em;text-transform:uppercase;margin-top:1rem;display:block;position:relative;z-index:1}
 
 /* CONTACT */
@@ -418,13 +426,13 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
     <div class="service-print-visual">
       <span class="service-laser-num">02 / 3D-DRUCK</span>
       <div class="print-art">
-        <img src="images/p1s.jpg" alt="Bambu Lab P1S mit gedruckter Vase" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
+        <img src="images/p1s.jpg" alt="Bambu Lab P1S mit gedruckter Vase" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
       </div>
       <div class="service-laser-material">
-        <span class="material-tag" style="border-color:rgba(42,92,63,0.3);color:#8AB89A">✓ PLA & PETG</span>
-        <span class="material-tag" style="border-color:rgba(42,92,63,0.3);color:#8AB89A">✓ TPU (flexibel)</span>
-        <span class="material-tag" style="border-color:rgba(42,92,63,0.3);color:#8AB89A">✓ ABS & ASA</span>
-        <span class="material-tag" style="border-color:rgba(42,92,63,0.3);color:#8AB89A">✓ Multicolor</span>
+        <span class="material-tag" style="border-color:rgba(240,232,213,0.2);color:rgba(240,232,213,0.8)">✓ PLA & PETG</span>
+        <span class="material-tag" style="border-color:rgba(240,232,213,0.2);color:rgba(240,232,213,0.8)">✓ TPU (flexibel)</span>
+        <span class="material-tag" style="border-color:rgba(240,232,213,0.2);color:rgba(240,232,213,0.8)">✓ ABS & ASA</span>
+        <span class="material-tag" style="border-color:rgba(240,232,213,0.2);color:rgba(240,232,213,0.8)">✓ Multicolor</span>
         <span class="material-tag no">✗ Metall / Keramik</span>
         <span class="material-tag no">✗ &gt; 256mm pro Seite</span>
       </div>
@@ -541,7 +549,7 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
     <div class="contact-details">
       <div class="cdetail">
         <div class="cdetail-marker"></div>
-        <div><strong><a id="emailLink" href="#kontakt" style="color:inherit;text-decoration:none"></a></strong></div>
+        <div><strong><span class="email-reveal" data-user="kontakt" data-domain="avocut" data-tld="de"></span></strong></div>
       </div>
       <div class="cdetail">
         <div class="cdetail-marker"></div>
@@ -607,22 +615,20 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
   <div class="footer-links">
     <a href="impressum.html">Impressum</a>
     <a href="datenschutz.html">Datenschutz</a>
-    <a id="footerEmail" href="#"></a>
+    <span class="email-reveal footer-email" data-user="kontakt" data-domain="avocut" data-tld="de"></span>
   </div>
 </footer>
 
 </div><!-- /site-wrap -->
 
 <script>
-// Assemble email to prevent Cloudflare obfuscation
-(function(){
-  var parts=[107,111,110,116,97,107,116,64,97,118,111,99,117,116,46,100,101];
-  var email=parts.map(function(c){return String.fromCharCode(c)}).join('');
-  var el=document.getElementById('emailLink');
-  var fe=document.getElementById('footerEmail');
-  if(el){el.textContent=email;el.href='mailto:'+email;}
-  if(fe){fe.textContent=email;fe.href='mailto:'+email;fe.style.color='rgba(255,255,255,0.4)';fe.style.textDecoration='none';}
-})();
+// Email reveal click handler
+document.querySelectorAll('.email-reveal').forEach(function(el){
+  el.addEventListener('click',function(){
+    var email=el.dataset.user+'@'+el.dataset.domain+'.'+el.dataset.tld;
+    window.location.href='mailto:'+email;
+  });
+});
 // Custom cursor — desktop only
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
