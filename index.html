@@ -88,7 +88,8 @@ nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to b
 
 /* TICKER */
 .ticker{background:var(--amber);padding:0.9rem 0;overflow:hidden;white-space:nowrap}
-.ticker-inner{display:inline-flex;gap:0;animation:ticker 18s linear infinite}
+.ticker-inner{display:inline-flex;gap:0;animation:ticker 25s linear infinite;will-change:transform}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .ticker-item{font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:400;color:var(--ink);letter-spacing:0.12em;text-transform:uppercase;padding:0 3rem}
 .ticker-dot{color:rgba(13,11,8,0.4);margin-right:-2rem}
 
@@ -339,6 +340,8 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
     <span class="ticker-item">PLA <span class="ticker-dot">·</span></span>
     <span class="ticker-item">PETG <span class="ticker-dot">·</span></span>
     <span class="ticker-item">TPU <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Filz <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Sperrholz <span class="ticker-dot">·</span></span>
   </div>
 </div>
 
@@ -348,7 +351,7 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
     <div class="service-laser-visual">
       <span class="service-laser-num">01 / LASERGRAVUR</span>
       <div class="laser-engraving-art">
-        <img src="images/xtool.jpg" alt="xTool M1 Laser in der Werkstatt" style="width:100%;height:100%;object-fit:cover;opacity:0.75;">
+        <img src="images/xtool.jpg" alt="xTool M1 Laser in der Werkstatt" style="width:100%;height:100%;object-fit:cover;object-position:20% center;opacity:0.9;">
       </div>
       <div class="service-laser-material">
         <span class="material-tag">✓ Holz & Sperrholz</span>
@@ -426,7 +429,7 @@ footer{background:var(--ink);border-top:1px solid var(--border-dark);padding:2.5
     <div class="service-print-visual">
       <span class="service-laser-num">02 / 3D-DRUCK</span>
       <div class="print-art">
-        <img src="images/p1s.jpg" alt="Bambu Lab P1S mit gedruckter Vase" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        <img src="images/p1s.jpg" alt="Bambu Lab P1S mit gedruckter Vase" style="width:100%;height:100%;object-fit:cover;object-position:center 75%;">
       </div>
       <div class="service-laser-material">
         <span class="material-tag" style="border-color:rgba(240,232,213,0.2);color:rgba(240,232,213,0.8)">✓ PLA & PETG</span>
